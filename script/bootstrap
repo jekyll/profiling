@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if test -z "$TRAVIS"
+then
+  EXTRA_ARGS=""
+else
+  EXTRA_ARGS="--path vendor"
+fi
+
+set -x
+
+bundle install --jobs=3 --binstubs $EXTRA_ARGS

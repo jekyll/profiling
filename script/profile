@@ -1,0 +1,28 @@
+#!/bin/bash
+
+: ${TEST_DIR:="tmp"}
+
+run_profile() {
+    bundle exec time bin/jekyll build -s $1 -d $1/_site
+}
+
+echo 1. First, a super basic Jekyll site. Start simple.
+
+run_profile simple-site
+
+echo 2. Now, the site Jekyll ships with.
+
+rm -rf $TEST_DIR
+jekyll new $TEST_DIR
+run_profile $TEST_DIR
+
+echo 3. Now, jekyllrb.com
+
+rm -rf $TEST_DIR
+git clone git://github.com/jekyll/jekyll.git $TEST_DIR
+pushd $TEST_DIR; git checkout gh-pages; popd
+run_profile $TEST_DIR
+
+echo 4. Next, a corporate-sized blog.
+
+echo 5. Last, the behemoth.
