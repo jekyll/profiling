@@ -2,6 +2,9 @@ language: ruby
 rvm:
 - 2.0
 - 2.1
+env:
+  - TEST_BRANCH=master
+  - TEST_BRANCH=liquid-3
 install: "travis_retry script/unbundle ; travis_retry script/bootstrap"
 script: script/benchmark
 notifications:
