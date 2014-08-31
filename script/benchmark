@@ -16,7 +16,7 @@ run_profile simple-site
 echo 2. Now, the site Jekyll ships with.
 
 rm -rf $TEST_DIR
-$JEKYLL new $TEST_DIR
+bundle exec $JEKYLL new $TEST_DIR
 run_profile $TEST_DIR
 
 echo 3. Now, jekyllrb.com
