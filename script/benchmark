@@ -1,10 +1,12 @@
 #!/bin/bash
 
+set -e
+
 : ${TEST_DIR:="tmp"}
 : ${JEKYLL:="bin/jekyll"}
 
 run_profile() {
-    bundle exec time $JEKYLL build -s $1 -d $1/_site
+    time bundle exec $JEKYLL build -s $1 -d $1/_site
 }
 
 echo 1. First, a super basic Jekyll site. Start simple.
@@ -14,7 +16,7 @@ run_profile simple-site
 echo 2. Now, the site Jekyll ships with.
 
 rm -rf $TEST_DIR
-$JEKYLL new $TEST_DIR
+bundle exec $JEKYLL new $TEST_DIR
 run_profile $TEST_DIR
 
 echo 3. Now, jekyllrb.com
